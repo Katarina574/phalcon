@@ -21,29 +21,42 @@ class UserController extends Controller
         $user = Users::findFirstById($id);
 
         if ($this->request->isPost()) {
-            $user->assign(
-                $this->request->getPost(),
-                [
-                    'name',
-                    'email',
-                    'password',
-                ]
-            );
+            $newName = $this->request->getPost('name');
+            $newEmail = $this->request->getPost('email');
+            $newPassword = $this->request->getPost('password');
 
-            if ($user->save()) {
-                echo("Korisnik uspesno sacuvan.");
-//                $this->response->redirect("/"); // Redirect to the list page
-            } else {
-                echo "Greska prilikom cuvanja korisnika";
+            $changes = false;
+
+            if ($newName !== $user->name) {
+                $changes = true;
+                $user->name = $newName;
+            }
+
+            if ($newEmail !== $user->email) {
+                $user->email = $newEmail;
+                $changes = true;
+            }
+
+            if ($newPassword !== $user->password) {
+                $user->password = $newPassword;
+                $changes = true;
+                $this->view->user = $user;
+            }
+            if ($changes && $user->save()) {
+                echo "Korisnik sacuvan.";
+            }
+            else {
+                echo "Nije bilo promena. Greska prilikom cuvanja.";
+                echo $newName;
             }
         }
-        $this->view->user = $user;
     }
 
-//    public function testAction() {
-//        $message = "Ovo je poruka iz test akcije";
-//        $this->view->user = $message;
-//    }
+    public function testAction()
+    {
+        $message = "Ovo je poruka iz test akcije";
+        $this->view->user = $message;
+    }
 
     public function viewAction($id)
     {

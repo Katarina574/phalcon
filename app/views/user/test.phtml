@@ -1,4 +1,13 @@
-<?php
-//echo "test";
-echo $mesasge;
-?>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+<h1>Test Page</h1>
+<?php if (isset($this->user)): ?>
+    <p><?= $this->user ?></p>
+<?php else: ?>
+    <p><?php $message ?></p>
+<?php endif; ?>
+</body>
+</html>

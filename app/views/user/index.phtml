@@ -11,6 +11,7 @@ $form->add(
         [
             'maxlength'   => 30,
             'placeholder' => $user->name,
+            'value' => $user->name
         ]
     ),
 );
@@ -20,6 +21,7 @@ $form->add(
         [
             'maxlength'   => 30,
             'placeholder' => $user->email,
+            'value' => $user->email,
         ]
     ),
 );
@@ -29,6 +31,7 @@ $form->add(
         [
             'maxlength'   => 30,
             'placeholder' => $user->password,
+            'value' => $user->password,
         ]
     ),
 );
@@ -50,4 +53,5 @@ $form->add(
     <p>
         <input type='submit' value='Update' formaction="/user/update/<?php echo $user->id; ?>"/>
     </p>
+
 </form>
