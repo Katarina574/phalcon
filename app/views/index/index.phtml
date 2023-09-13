@@ -13,10 +13,9 @@
     use Phalcon\Tag;
 
     echo "<h1>Zdravo!</h1>";
-    echo "<h1>$message!</h1>";
-
 
     echo Tag::linkTo(["signup", "Uloguj se ovde", 'class' => 'btn btn-primary']);
+
 
     if ($users->count() > 0) {
     ?>
@@ -30,7 +29,7 @@
         </thead>
         <tfoot>
         <tr>
-            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+            <td colspan="3">Total users: <?php echo $users->count(); ?></td>
         </tr>
         </tfoot>
         <tbody>
