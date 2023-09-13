@@ -41,7 +41,7 @@
                 <td><?php echo $user->email; ?></td>
                 <td>
 <!--                   --><?php //echo Tag::linkTo(["/user/index/".$user->id, "Edit", 'class' => 'btn btn-success']); ?>
-                   <?php echo Tag::linkTo(["/user/edit/".$user->id, "Edit sa editAction", 'class' => 'btn btn-success']); ?>
+                   <?php echo Tag::linkTo(["/user/edit/".$user->id, "Edit", 'class' => 'btn btn-success']); ?>
                 </td>
                 <td>
                     <a href="/user/delete/<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
