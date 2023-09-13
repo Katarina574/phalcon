@@ -1,0 +1,8 @@
+<?php use Phalcon\Tag; ?>
+
+    <!-- app/views/posts/register.phtml -->
+<div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
+    <?php echo $message; ?>
+</div>
+
+<?php echo Tag::linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>

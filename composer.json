@@ -1,0 +1,22 @@
+{
+  "name": "katarina/phalcon",
+  "description": "Phalcon project tutorial",
+  "require": {
+    "phalcon/devtools": "^4.3.x-dev",
+    "psr/container": "^1.1"
+  },
+  "require-dev": {
+    "phalcon/ide-stubs": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Katarina\\Phalcon\\": "app/"
+    }
+  },
+  "authors": [
+    {
+      "name": "katarina.pavlovic",
+      "email": "katarina.pavlovic@badin.rs"
+    }
+  ]
+}

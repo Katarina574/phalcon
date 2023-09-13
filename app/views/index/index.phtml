@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moj projekat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+
+    <?php
+
+    use Phalcon\Tag;
+
+    echo "<h1>Zdravo!</h1>";
+    echo "<h1>$message!</h1>";
+
+
+    echo Tag::linkTo(["signup", "Uloguj se ovde", 'class' => 'btn btn-primary']);
+
+    if ($users->count() > 0) {
+    ?>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach ($users as $user) { ?>
+            <tr>
+                <td><?php echo $user->id; ?></td>
+                <td><?php echo $user->name; ?></td>
+                <td><?php echo $user->email; ?></td>
+                <td>
+                   <?php echo Tag::linkTo(["/user/index/".$user->id, "Edit", 'class' => 'btn btn-success']); ?>
+                   <?php echo Tag::linkTo(["/user/edit/".$user->id, "Edit sa editAction", 'class' => 'btn btn-success']); ?>
+                </td>
+                <td>
+                    <a href="/user/delete/<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<?php
+}

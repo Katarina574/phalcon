@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moj projekat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <?php echo $message ?> <br>
+    <?php echo "Tu smo" ?> <br>
+    <?php foreach ($users as $user) { ?>
+        <tr>
+            <td><?php echo $user->id; ?></td>
+            <td><?php echo $user->name; ?></td>
+            <td><?php echo $user->email; ?></td>
+        </tr>
+    <?php } ?>
+
+</div>
+
+</body>
+</html>

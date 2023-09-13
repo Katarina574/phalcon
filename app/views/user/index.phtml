@@ -1,0 +1,53 @@
+<?php
+use Phalcon\Forms\Form;
+use Phalcon\Forms\Element\Text;
+
+
+$form = new Form();
+
+$form->add(
+    new Text(
+        'name',
+        [
+            'maxlength'   => 30,
+            'placeholder' => $user->name,
+        ]
+    ),
+);
+$form->add(
+    new Text(
+        'email',
+        [
+            'maxlength'   => 30,
+            'placeholder' => $user->email,
+        ]
+    ),
+);
+$form->add(
+    new Text(
+        'password',
+        [
+            'maxlength'   => 30,
+            'placeholder' => $user->password,
+        ]
+    ),
+);
+?>
+<h2>This form is coming from views/user/index.phtml: </h2>
+<form method='post'>
+    <p>
+        <label for="name">Name</label>
+        <?php echo $form->render('name'); ?>
+    </p>
+    <p>
+        <label for="name">Email</label>
+        <?php echo $form->render('email'); ?>
+    </p>
+    <p>
+        <label for="name">Password</label>
+        <?php echo $form->render('password'); ?>
+    </p>
+    <p>
+        <input type='submit' value='Update' formaction="/user/update/<?php echo $user->id; ?>"/>
+    </p>
+</form>
