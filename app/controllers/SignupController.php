@@ -10,8 +10,9 @@ class SignupController extends Controller
     }
     public function registerAction()
     {
-        $user = new Users();
-        $user->assign(
+        $allUsers = Users::find();
+        $newUser = new Users();
+        $newUser->assign(
             $this->request->getPost(),
             [
                 'name',
@@ -19,13 +20,20 @@ class SignupController extends Controller
                 'password'
             ]
         );
+        $success = true;
 
-        $success = $user->save();
+        foreach ($allUsers as $user) {
+            if ($user->email === $newUser->email) {
+                $success = false;
+                break;
+            }
+        }
 
         if ($success) {
+            $success = $newUser->save();
             $message = "Thanks for registering!";
         } else {
-            $message = "Greska pri registraciji;";
+            $message = "Greska pri registraciji. Korisnik sa tom email adresom je vec registrovan.";
         }
 
         $this->view->message = $message;

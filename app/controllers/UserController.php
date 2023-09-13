@@ -47,7 +47,6 @@ class UserController extends Controller
             }
             else {
                 echo "Nije bilo promena. Greska prilikom cuvanja.";
-                echo $newName;
             }
         }
     }
